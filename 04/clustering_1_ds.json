@@ -1,0 +1,68 @@
+{
+  "customer": {
+    "cluster_columns": [
+      "c_customer_sk"
+    ],
+    "sort_column": "c_customer_sk"
+  },
+  "catalog_sales": {
+    "cluster_columns": [
+      "cs_item_sk"
+    ],
+    "sort_column": "cs_item_sk"
+  },
+  "store_sales": {
+    "cluster_columns": [
+      "ss_quantity"
+    ],
+    "sort_column": "ss_quantity"
+  },
+  "time_dim": {
+    "cluster_columns": [
+      "t_hour"
+    ],
+    "sort_column": "t_hour"
+  },
+  "inventory": {
+    "cluster_columns": [
+      "inv_quantity_on_hand"
+    ],
+    "sort_column": "inv_quantity_on_hand"
+  },
+  "web_returns": {
+    "cluster_columns": [
+      "wr_item_sk"
+    ],
+    "sort_column": "wr_item_sk"
+  },
+  "catalog_returns": {
+    "cluster_columns": [
+      "cr_returned_date_sk"
+    ],
+    "sort_column": "cr_returned_date_sk"
+  },
+  "store_returns": {
+    "cluster_columns": [
+      "sr_item_sk"
+    ],
+    "sort_column": "sr_item_sk"
+  },
+  "customer_demographics": {
+    "cluster_columns": [
+      "cd_education_status"
+    ],
+    "sort_column": "cd_education_status"
+  },
+  "date_dim": {
+    "cluster_columns": [
+      "d_year"
+    ],
+    "sort_column": "d_year"
+  },
+  "web_sales": {
+    "cluster_columns": [
+      "ws_net_profit"
+    ],
+    "sort_column": "ws_net_profit"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "customer": {
+    "cluster_columns": [
+      "c_acctbal"
+    ],
+    "sort_column": "c_custkey"
+  },
+  "orders": {
+    "cluster_columns": [
+      "o_orderdate"
+    ],
+    "sort_column": "o_orderkey"
+  },
+  "partsupp": {
+    "cluster_columns": [
+      "ps_suppkey"
+    ],
+    "sort_column": "ps_suppkey"
+  },
+  "lineitem": {
+    "cluster_columns": [
+      "l_suppkey"
+    ],
+    "sort_column": "l_discount"
+  },
+  "part": {
+    "cluster_columns": [
+      "p_name"
+    ],
+    "sort_column": "p_partkey"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "customer": {
+    "cluster_columns": [
+      "c_customer_sk"
+    ],
+    "sort_column": "c_current_cdemo_sk"
+  },
+  "catalog_sales": {
+    "cluster_columns": [
+      "cs_item_sk"
+    ],
+    "sort_column": "cs_sold_date_sk"
+  },
+  "store_sales": {
+    "cluster_columns": [
+      "ss_quantity"
+    ],
+    "sort_column": "ss_sold_date_sk"
+  },
+  "time_dim": {
+    "cluster_columns": [
+      "t_hour"
+    ],
+    "sort_column": "t_time_sk"
+  },
+  "inventory": {
+    "cluster_columns": [
+      "inv_quantity_on_hand"
+    ],
+    "sort_column": "inv_date_sk"
+  },
+  "web_returns": {
+    "cluster_columns": [
+      "wr_item_sk"
+    ],
+    "sort_column": "wr_refunded_cdemo_sk"
+  },
+  "catalog_returns": {
+    "cluster_columns": [
+      "cr_returned_date_sk"
+    ],
+    "sort_column": "cr_returning_addr_sk"
+  },
+  "store_returns": {
+    "cluster_columns": [
+      "sr_item_sk"
+    ],
+    "sort_column": "sr_ticket_number"
+  },
+  "customer_demographics": {
+    "cluster_columns": [
+      "cd_education_status"
+    ],
+    "sort_column": "cd_demo_sk"
+  },
+  "date_dim": {
+    "cluster_columns": [
+      "d_year"
+    ],
+    "sort_column": "d_date_sk"
+  },
+  "web_sales": {
+    "cluster_columns": [
+      "ws_net_profit"
+    ],
+    "sort_column": "ws_sold_date_sk"
+  }
+}
