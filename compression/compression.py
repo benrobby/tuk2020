@@ -1,3 +1,4 @@
+import os
 import enum
 import pickle
 import numpy as np
@@ -45,12 +46,12 @@ class EncodedColumn:
 
 
 def run():
-    with open('runtimes.pickle', 'rb') as input:
+    with open("runtimes.pickle", 'rb') as input:
         runtimes = pickle.load(input)
-    with open('sizes.pickle', 'rb') as input:
+    with open("sizes.pickle", 'rb') as input:
         sizes = pickle.load(input)
     assert np.shape(runtimes) == np.shape(sizes)
-    attributes = pd.read_csv('attribute_meta_data.csv')
+    attributes = pd.read_csv("attribute_meta_data.csv")
 
     # it contains negative sizes (doesn't make sense)
     sizes = np.maximum(sizes, 0)
@@ -58,9 +59,17 @@ def run():
     budgets_factors = [0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3]
     # need smaller factors. For 0.7, we just take the best metric for each column
     metrics = [
-        ("performance", lambda runtime_gains, sizes_losses: runtime_gains),
-        ("performance-size", lambda runtime_gains, sizes_losses: runtime_gains / (sizes_losses)),
+        ('performance', lambda runtime_gains, sizes_losses: runtime_gains),
+        ('performance-size', lambda runtime_gains, sizes_losses: runtime_gains / (sizes_losses)),
     ]
+
+    compression_names = {
+        'FSBA': "Fixed-size byte-aligned",
+        'SIMDBP128': "SIMD-BP128"
+    }
+
+    if not os.path.exists("config"):
+        os.makedirs("config")
 
     for metric in metrics:
         for b in budgets_factors:
@@ -97,8 +106,8 @@ def run():
             budget_size = b * all_dict_encoding_size
 
             print(
-                f'greedily choosing the encodings with the best metrics. budget {b}, max size {budget_size}, '
-                f'metric {metric[0]}')
+                f"greedily choosing the encodings with the best metrics. budget {b}, max size {budget_size}, "
+                f"metric {metric[0]}")
 
             current_size = sum(e.get_current_size() for e in encoded_columns)
 
@@ -123,7 +132,7 @@ def run():
                 for c in ['FSBA', 'SIMDBP128']:
                     if encoding.endswith(c):
                         encoding = encoding[:len(encoding) - len(c)]
-                        compression = c
+                        compression = compression_names.get(c)
                         break
 
                 output_encodings[e.t_name][e.a_name] = {
@@ -133,8 +142,8 @@ def run():
                 if compression is not None:
                     output_encodings[e.t_name][e.a_name]['compression'] = compression
 
-            with open("output/encoding_" + metric[0] + "_" + str(b) + '.json', "w") as f:
-                f.write(json.dumps({'custom': output_encodings}))
+            with open("config/encoding_" + metric[0] + "_" + str(b) + ".json", 'w', newline='\n') as f:
+                f.write(json.dumps({ 'default': { 'encoding': 'Dictionary' }, 'custom': output_encodings }, indent=4))
 
     return
 
