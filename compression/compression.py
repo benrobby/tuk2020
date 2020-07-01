@@ -52,15 +52,16 @@ def run():
         sizes = pickle.load(input)
     assert np.shape(runtimes) == np.shape(sizes)
     attributes = pd.read_csv("attribute_meta_data.csv")
+    tables = pd.read_csv("table_meta_data.csv")
 
     # it contains negative sizes (doesn't make sense)
     sizes = np.maximum(sizes, 0)
 
-    budgets_factors = [0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3]
+    budgets_factors = [1.1, 1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3]
     # need smaller factors. For 0.7, we just take the best metric for each column
     metrics = [
         ('performance', lambda runtime_gains, sizes_losses: runtime_gains),
-        ('performance-size', lambda runtime_gains, sizes_losses: runtime_gains / (sizes_losses)),
+        ('performance-size', lambda runtime_gains, sizes_losses: runtime_gains / np.maximum(np.finfo(float).eps, sizes_losses)),
     ]
 
     compression_names = {
@@ -84,10 +85,13 @@ def run():
 
                 sizes_for_column = sizes[t_id, a_id]
                 runtimes_for_column = runtimes[t_id, a_id]
+                
 
                 indices = np.arange(len(sizes_for_column))
                 invalid_encoding_indices = indices[
                     np.logical_and(sizes_for_column == np.finfo(np.float64).max, runtimes_for_column == 0.0)]
+                # after validation, scale to resemble sizes for whole table (not just one segment)
+                sizes_for_column *= np.maximum(1, tables.loc[t_id, 'ROW_COUNT'] / tables.loc[t_id, 'MAX_CHUNK_SIZE'])
 
                 smallest_encoding = np.argmin(sizes_for_column)
 

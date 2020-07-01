@@ -5,8 +5,7 @@
     "custom": {
         "customer": {
             "c_custkey": {
-                "encoding": "FrameOfReference",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "Unencoded"
             },
             "c_name": {
                 "encoding": "FixedStringDictionary",
@@ -39,8 +38,7 @@
         },
         "lineitem": {
             "l_orderkey": {
-                "encoding": "FrameOfReference",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "Unencoded"
             },
             "l_partkey": {
                 "encoding": "FrameOfReference",
@@ -105,16 +103,16 @@
         },
         "nation": {
             "n_nationkey": {
-                "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "FrameOfReference",
+                "compression": "SIMD-BP128"
             },
             "n_name": {
-                "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "LZ4",
+                "compression": "SIMD-BP128"
             },
             "n_regionkey": {
-                "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "FrameOfReference",
+                "compression": "SIMD-BP128"
             },
             "n_comment": {
                 "encoding": "Dictionary",
@@ -123,8 +121,7 @@
         },
         "orders": {
             "o_orderkey": {
-                "encoding": "FrameOfReference",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "Unencoded"
             },
             "o_custkey": {
                 "encoding": "FrameOfReference",
@@ -147,8 +144,8 @@
                 "compression": "Fixed-size byte-aligned"
             },
             "o_clerk": {
-                "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "FixedStringDictionary",
+                "compression": "SIMD-BP128"
             },
             "o_shippriority": {
                 "encoding": "Dictionary",
@@ -161,8 +158,7 @@
         },
         "part": {
             "p_partkey": {
-                "encoding": "FrameOfReference",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "Unencoded"
             },
             "p_name": {
                 "encoding": "FixedStringDictionary",
@@ -190,11 +186,11 @@
             },
             "p_retailsize": {
                 "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "compression": "SIMD-BP128"
             },
             "p_comment": {
-                "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "LZ4",
+                "compression": "SIMD-BP128"
             }
         },
         "partsupp": {
@@ -215,18 +211,18 @@
                 "compression": "Fixed-size byte-aligned"
             },
             "ps_comment": {
-                "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "LZ4",
+                "compression": "SIMD-BP128"
             }
         },
         "region": {
             "r_regionkey": {
-                "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "FrameOfReference",
+                "compression": "SIMD-BP128"
             },
             "r_name": {
-                "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "FixedStringDictionary",
+                "compression": "SIMD-BP128"
             },
             "r_comment": {
                 "encoding": "Dictionary",
@@ -255,8 +251,7 @@
                 "compression": "SIMD-BP128"
             },
             "s_acctbal": {
-                "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "Unencoded"
             },
             "s_comment": {
                 "encoding": "FixedStringDictionary",

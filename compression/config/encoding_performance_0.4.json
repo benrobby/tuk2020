@@ -9,20 +9,20 @@
                 "compression": "SIMD-BP128"
             },
             "c_name": {
-                "encoding": "FixedStringDictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "LZ4",
+                "compression": "SIMD-BP128"
             },
             "c_address": {
-                "encoding": "FixedStringDictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "LZ4",
+                "compression": "SIMD-BP128"
             },
             "c_nationkey": {
                 "encoding": "Dictionary",
                 "compression": "SIMD-BP128"
             },
             "c_phone": {
-                "encoding": "FixedStringDictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "LZ4",
+                "compression": "SIMD-BP128"
             },
             "c_acctbal": {
                 "encoding": "Unencoded"
@@ -32,14 +32,14 @@
                 "compression": "SIMD-BP128"
             },
             "c_comment": {
-                "encoding": "FixedStringDictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "LZ4",
+                "compression": "SIMD-BP128"
             }
         },
         "lineitem": {
             "l_orderkey": {
-                "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "FrameOfReference",
+                "compression": "SIMD-BP128"
             },
             "l_partkey": {
                 "encoding": "FrameOfReference",
@@ -58,8 +58,8 @@
                 "compression": "SIMD-BP128"
             },
             "l_extendedprice": {
-                "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "LZ4",
+                "compression": "SIMD-BP128"
             },
             "l_discount": {
                 "encoding": "Dictionary",
@@ -79,15 +79,15 @@
             },
             "l_shipdate": {
                 "encoding": "FixedStringDictionary",
-                "compression": "Fixed-size byte-aligned"
+                "compression": "SIMD-BP128"
             },
             "l_commitdate": {
                 "encoding": "FixedStringDictionary",
-                "compression": "Fixed-size byte-aligned"
+                "compression": "SIMD-BP128"
             },
             "l_receiptdate": {
                 "encoding": "FixedStringDictionary",
-                "compression": "Fixed-size byte-aligned"
+                "compression": "SIMD-BP128"
             },
             "l_shipinstruct": {
                 "encoding": "FixedStringDictionary",
@@ -122,8 +122,8 @@
         },
         "orders": {
             "o_orderkey": {
-                "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "FrameOfReference",
+                "compression": "SIMD-BP128"
             },
             "o_custkey": {
                 "encoding": "FrameOfReference",
@@ -159,8 +159,8 @@
         },
         "part": {
             "p_partkey": {
-                "encoding": "Dictionary",
-                "compression": "Fixed-size byte-aligned"
+                "encoding": "FrameOfReference",
+                "compression": "SIMD-BP128"
             },
             "p_name": {
                 "encoding": "LZ4",
